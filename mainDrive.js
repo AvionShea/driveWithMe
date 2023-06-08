@@ -12,7 +12,13 @@ function animate(){
     car.update();
 
     canvas.height = window.innerHeight //setting canvas to full height
+
+    ctx.save(); //save context
+    ctx.translate(0, -car.y+canvas.height*0.88); //translate nothing on x-axis, but minus the y value of the car
+
     road.draw(ctx); //drawing road lines onto the canvas
     car.draw(ctx); //drawing car onto the canvas
+
+    ctx.restore();
     requestAnimationFrame(animate); //calls animate method over and over many times per second
 }
