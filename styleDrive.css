@@ -1,0 +1,10 @@
+body{
+    margin: 0;
+    background: rgb(49, 49, 49);
+    overflow: hidden;
+    text-align: center;
+}
+
+#drivingCanvas{
+    background: rgb(77, 77, 77);
+}
