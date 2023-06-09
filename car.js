@@ -14,14 +14,17 @@ class Car{
         this.acceleration = 0.2;
         this.maxSpeed = 3;
         this.friction = 0.05;
-        this.angle = 0
+        this.angle = 0;
+
+        this.sensor=new Sensor(this);
         
         //controls
         this.controls = new Controls();
     }
     //method to move the car on canvas
-    update(){
+    update(roadBorders){
         this.#move();
+        this.sensor.update(roadBorders);
     }
 
     //private method
@@ -69,7 +72,8 @@ class Car{
     draw(ctx){
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.rotate(-this.angle)
+        ctx.rotate(-this.angle);
+        
         ctx.beginPath();
         ctx.rect( //starts at x and y location
             - this.width/2, //the x is going to be the center of the car
@@ -80,5 +84,7 @@ class Car{
         ctx.fill();
 
         ctx.restore();
+
+        this.sensor.draw(ctx);
     }
 }
