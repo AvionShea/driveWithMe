@@ -29,6 +29,17 @@ class Sensor{
                 roadBorders[i][0],
                 roadBorders[i][1]
             );
+            if(touch){
+                touch.push(touch);
+            }
+        }
+
+        if(touches.length ==0){
+            return null;
+        }else{
+            const offsets=touches.map(e=>e.offset);
+            const minOffset=Math.min(...offsets);
+            return touches.find(e=>e.offset==minOffset);
         }
     }
 
@@ -54,7 +65,11 @@ class Sensor{
 
     draw(ctx){
         for(let i=0; i<this.rayCount; i++){
-            
+            let end=this.rays[i][1];
+            if(this.readings[i]){
+                end=this.readings[i];
+            }
+
             ctx.beginPath();
             ctx.lineWidth=2;
             ctx.strokeStyle="blue";
@@ -63,10 +78,25 @@ class Sensor{
                 this.rays[i][0].y
             );
             ctx.lineTo(
+                end.x,
+                end.y
+            );
+    
+            ctx.stroke();
+
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth=2;
+            ctx.strokeStyle="red";
+            ctx.moveTo(
                 this.rays[i][1].x,
                 this.rays[i][1].y
             );
-    
+            ctx.lineTo(
+                end.x,
+                end.y
+            );
             ctx.stroke();
         }
     }
