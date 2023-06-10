@@ -1,8 +1,8 @@
 class Sensor{
     constructor(car){
         this.car=car;
-        this.rayCount=6;
-        this.rayLength=185;
+        this.rayCount=5;
+        this.rayLength=150;
         this.raySpread=Math.PI/4;
 
         this.rays=[];
@@ -82,8 +82,6 @@ class Sensor{
                 end.y
             );
     
-            ctx.stroke();
-
             ctx.stroke();
 
             ctx.beginPath();
