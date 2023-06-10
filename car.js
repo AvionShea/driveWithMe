@@ -27,6 +27,10 @@ class Car{
         this.sensor.update(roadBorders);
     }
 
+    #createPolygon(){
+        const points=[];
+    }
+
     //private method
     #move(){
         if(this.controls.forward){
