@@ -29,6 +29,12 @@ class Car{
 
     #createPolygon(){
         const points=[];
+        const rad=Math.hypot(this.width, this.height) /this.sensor;
+        const alpha=Math.atan2(this.width, this.height);
+        points.push({
+            x:this.x-Math.sin(this.angle-alpha)*rad,
+            y:this.y=Math.cos(this.angle-alpha)*rad;
+        })
     }
 
     //private method
