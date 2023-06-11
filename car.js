@@ -1,7 +1,7 @@
 //defining car class
 class Car{
     //storing inside of object as attributes - car knows where and how big it is
-    constructor(x,y, width, height){
+    constructor(x,y, width, height, controlType, maxSpeed = 3){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -12,24 +12,28 @@ class Car{
 
         //give car acceleration
         this.acceleration = 0.2;
-        this.maxSpeed = 3;
+        this.maxSpeed = maxSpeed;
         this.friction = 0.05;
         this.angle = 0;
         this.damaged=false;
 
-        this.sensor=new Sensor(this);
+        if(controlType != "DUMMY"){
+            this.sensor=new Sensor(this);
+        }
         
         //controls
-        this.controls = new Controls();
+        this.controls = new Controls(controlType);
     }
     //method to move the car on canvas
-    update(roadBorders){
+    update(roadBorders, traffic){
         if(!this.damaged){
             this.#move();
             this.polygon=this.#createPolygon();
-            this.damaged=this.#assessDamage(roadBorders);
+            this.damaged=this.#assessDamage(roadBorders, traffic);
         }
-        this.sensor.update(roadBorders);
+        if(this.sensor){
+            this.sensor.update(roadBorders, traffic);
+        }
     }
 
     #assessDamage(roadBorders){
@@ -120,6 +124,8 @@ class Car{
         }
         ctx.fill();
 
-        this.sensor.draw(ctx);
+        if(this.sensor){
+            this.sensor.draw(ctx);
+        }
     }
 }
