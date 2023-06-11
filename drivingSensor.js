@@ -30,7 +30,7 @@ class Sensor{
                 roadBorders[i][1]
             );
             if(touch){
-                touch.push(touch);
+                touches.push(touch);
             }
         }
 
