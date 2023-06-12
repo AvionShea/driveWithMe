@@ -2,9 +2,26 @@ body{
     margin: 0;
     background: rgb(42, 100, 4);
     overflow: hidden;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+#verticalBtns{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+    padding-bottom: 7px;
+    margin: 2px;
+    cursor: pointer;
+}
+button:hover{
+    background: steelblue;
+}
 #networkCanvas{
     background: rgb(0, 0, 0);
 }
