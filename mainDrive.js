@@ -23,9 +23,9 @@ function animate(){
 
     road.draw(ctx); //drawing road lines onto the canvas
     for(let i =0; i<traffic.length;i++ ){ //drawing traffic on canvas
-        traffic[i].draw(ctx);
+        traffic[i].draw(ctx, "pink");
     }
-    car.draw(ctx); //drawing car onto the canvas
+    car.draw(ctx, "purple"); //drawing car onto the canvas
 
     ctx.restore();
     requestAnimationFrame(animate); //calls animate method over and over many times per second
