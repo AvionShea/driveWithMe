@@ -5,6 +5,9 @@ body{
     text-align: center;
 }
 
+#networkCanvas{
+    background: rgb(0, 0, 0);
+}
 #drivingCanvas{
     background: rgb(77, 77, 77);
 }
